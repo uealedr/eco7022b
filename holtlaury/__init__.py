@@ -27,14 +27,16 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    choice1 = models.StringField(
-        choices=["A", "B"],
-        label="1-in-10"
-    )
-    choice2 = models.StringField(
-        choices=["A", "B"],
-        label="2-in-10"
-    )
+    @staticmethod
+    def _make_choice_field(label: str):
+        return models.StringField(
+            choices=["A", "B"],
+            label=label,
+            widget=widgets.RadioSelectHorizontal
+        )
+
+    choice1 = _make_choice_field("1-in-10")
+    choice2 = _make_choice_field("2-in-10")
     paid_choice = models.StringField()
     die_roll = models.IntegerField()
 

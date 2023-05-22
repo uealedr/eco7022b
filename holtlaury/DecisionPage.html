@@ -1,9 +1,29 @@
 {{ block title }}
-    Page title
+    Decision
 {{ endblock }}
 {{ block content }}
 
-    {{ formfields }}
+
+{{ for field in form }}
+<div class="row border">
+    <div class="col-5 text-end">
+        <span class="fw-bold">Option A:</span>
+        <br/> {{ C.LOTTERY_PAYOFFS.A.0 }} with a {{ field.label }} chance, and
+        {{ C.LOTTERY_PAYOFFS.A.1 }} otherwise
+    </div>
+    {{ for choice in field }}
+    <div class="col-1">
+        {{ choice }}
+    </div>
+    {{ endfor }}
+    <div class="col-5 text-start">
+        <span class="fw-bold">Option B:</span>
+        <br/> {{ C.LOTTERY_PAYOFFS.B.0 }} with a {{ field.label }} chance, and
+        {{ C.LOTTERY_PAYOFFS.B.1 }} otherwise
+    </div>
+</div>
+{{ endfor }}
+
     {{ next_button }}
 
 {{ endblock }}
