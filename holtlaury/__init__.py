@@ -37,11 +37,20 @@ class Player(BasePlayer):
 
     choice1 = _make_choice_field("1-in-10")
     choice2 = _make_choice_field("2-in-10")
+    choice3 = _make_choice_field("3-in-10")
+    choice4 = _make_choice_field("4-in-10")
+    choice5 = _make_choice_field("5-in-10")
+    choice6 = _make_choice_field("6-in-10")
+    choice7 = _make_choice_field("7-in-10")
+    choice8 = _make_choice_field("8-in-10")
+    choice9 = _make_choice_field("9-in-10")
+    choice10 = _make_choice_field("10-in-10")
     paid_choice = models.StringField()
     die_roll = models.IntegerField()
 
     def choice_fields(self):
-        return ['choice1', 'choice2']
+        return ['choice1', 'choice2', 'choice3', 'choice4', 'choice5',
+                'choice6', 'choice7', 'choice8', 'choice9', 'choice10']
 
     def determine_outcome(self):
         self.die_roll = random.randint(0, 9)
